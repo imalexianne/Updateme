@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %} 
+{% load staticfiles %}
+{% block content %}
+
+<html>
+    <body>
+        <div class="container">
+            <h1>{{date|date:"l d-F Y"}}</h1>
+        </div>
+    </body>
+</html>
+
+{%endblock%}
