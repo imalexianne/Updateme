@@ -18,7 +18,19 @@
         <a class="navbar-brand" href="{%url 'profile'  user.id%}" style="text-align: center;padding-left:20px;font-family: monospace;"><strong>EDIT PROFILE</strong></a>
         <a class="navbar-brand" href="/logout" style="text-align: center;padding-left:20px;font-family: monospace;"><strong>LOGOUT</strong></a>
         {% else %}
-       
+        <ul class="nav navbar-nav">
+  
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="{% url 'welcome' %}">LOCATION
+            <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="/location/9">SPORTS</a></li>
+              <li><a href="/location/10">MUSIC FEST</a></li>
+              <li><a href="/location/12">ENTERTAINMENT</a></li>
+              <li><a href="/location/11">SEMINARS</a></li>
+            </ul>
+          </li>
+        </ul>     
         <a class="navbar-brand" href="{% url 'organiser' %}" style="text-align: center;padding-left:20px;font-family: monospace;color:red;"><strong>ORGANISERS</strong></a>
         <a class="navbar-brand" href="/advices" style="text-align: center;padding-left:20px;font-family: monospace;color:red;"><strong>GET TICKETS</strong></a>
         <a class="navbar-brand" href="/accounts/login/" style="text-align: center;padding-left:20px;font-family: monospace;"><strong>Login as Organiser</strong></a>
