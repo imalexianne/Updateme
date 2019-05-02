@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %} 
+{% load staticfiles %}
+{% block content %}
+<html>
+    <body>
+        <div class="container">
+            <p>Specializing in HD, Vimeo is one of the more popular amateur online video sites where the results are anything but amateur. Most of the free clips available on Vimeo are user-submitted; it’s not a site to visit if you’re looking for popular music videos or movie trailers. What you will find, though, are big and beautiful HD videos shot by some of the most skilled up-and-coming directors and animators. The Vimeo video screen is far larger and has a higher resolution than any of the other sites mentioned here. Those who like to upload videos to your cell phone will appreciate that the free clips on Vimeo are optimized for playback on mobile devices.</p>
+                <center><button><center><a class="navbar-brand" href="/accounts/register" style="font-family: 'Pacifico', cursive;">ORGANISE</a></center></button></center>
+            <center><button><center><a class="navbar-brand" href="{%url 'home'%}" style="font-family: 'Pacifico', cursive;">VIEW EVENTS</a></center></button></center>
+        </div>
+    </body>
+</html>
+{% endblock %}

@@ -6,7 +6,6 @@ from tinymce.models import HTMLField
 from django.contrib.auth.management.commands import createsuperuser
 from django.core.management.base import CommandError
 
-# Create your models here.
 class Command(createsuperuser.Command):
     def handle(self, *args, **options):
         if self.UserModel.objects.filter(is_superuser=True).exists():
@@ -46,19 +45,33 @@ def update_user_profile(sender, instance, created, **kwargs):
 class Category(models.Model):
     name = models.CharField(max_length=100,null=True)
 
+    def __str__(self):
+        return self.name
+
+
 class Event(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE, null=True)
     title = models.CharField(max_length=100,null=True)
+    picture=models.ImageField(upload_to='images/', null=True)
     description = HTMLField()
-    demo =  models.FileField(upload_to='videos/', null=True, verbose_name="")
-    location = models.CharField(max_length=100,null=True)
-    category = models.ForeignKey(Category,on_delete=models.CASCADE, null=True)
-    price = models.PositiveIntegerField(null=True)
-    number_of_tickets = models.PositiveIntegerField(null=True)
-    held_on = models.DateTimeField()
+    demo_video =  models.FileField(upload_to='videos/', null=True)
+    district = models.CharField(max_length=100,null=True)
+    sector = models.CharField(max_length=100,null=True)
+    cell = models.CharField(max_length=100,null=True)
+    street = models.CharField(max_length=100,null=True)
+    building = models.CharField(max_length=100,null=True,blank = True)
+    event_category = models.ForeignKey(Category,on_delete=models.CASCADE, null=True)
     duration = models.PositiveIntegerField(null=True)
     post_date = models.DateTimeField(auto_now_add=True, null=True)
+  
+    def __str__(self):
+        return self.name + ": " +str(demo_video)
+
+class Ticket(models.Model):
+    event = models.ForeignKey(Event,on_delete=models.CASCADE, null=True)
+    ticket_name = models.CharField(max_length=100,null=True)
+    price = models.PositiveIntegerField(null=True)
+    number_of_tickets = models.PositiveIntegerField(null=True)
 
     def __str__(self):
-        return self.videofile
-
+        return self.ticket_name

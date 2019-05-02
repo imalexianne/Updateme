@@ -5,9 +5,14 @@
 
 <html>
     <body>
-        <div class="container">
-            <h1>{{date|date:"l d-F Y"}}</h1>
-        </div>
+    <div class="container">
+            <h4 style="text-align: center;padding-left:20px;font-family: monospace;color:black;"><strong>WELCOME {{user.username|upper}}</strong></h4>
+            <p style="text-align: center;padding-left:20px;font-family: monospace;color:black;"><strong>{{date|date:"l d-F Y"|upper}}</strong></p>
+        {% for i in event %}
+        <h2>{{i.title}}</h2>
+       
+        {% endfor %}
+    </div>
     </body>
 </html>
 
