@@ -1,0 +1,44 @@
+{%extends 'base.html'%}
+{% block content %}
+{{block.super}}
+<head>
+        <link href="https://fonts.googleapis.com/css?family=Acme|Pacifico|Playfair+Display" rel="stylesheet">
+
+</head>
+<body>
+    <div class = "container">
+        <div class="jumbotron">
+            <h4><center  style="font-family: monospace;">{{user.username|upper}},</center></h4>
+            <p style="font-family: monospace;"> <center style="font-family: monospace;text-shadow: cadetblue;"><strong>Below are quetions that have been asked by our users if you feel like you can help PLEASE DO ! <br>You can add by commenting anyhting that you feel might be beneficial to the user.<br>Just Click the links below!</strong></center></p>
+        </div> 
+        <h1><center>{{post.title}}</center></h1>
+        <img src="{{post.profile_pic.url}}">
+        <div class="row">
+                <div class="col-md-6">
+                      <p>{% autoescape on %}
+                            {{post.description| safe}}
+                {% endautoescape %}</p>
+    
+                </div>
+                <div class="col-md-6">
+                <!-- video -->
+                    <video width="400" controls>
+                        <source src="{{post.demo.url}}" type="video/mp4">
+                        Your browser does not support HTML5 video.
+                      </video>
+                      
+                </div>
+       </div>
+       <h3><center>EVENT LOCATION</center></h3>
+       <p>DISTRICT {{post.district}}</p>
+       <p>SECTOR {{post.sector}}</p>
+       <p>CELL {{post.cell}}</p>
+       <p>STREET {{post.street}}</p>
+       <p>BUILDING {{post.building}}</p>
+       <p>HELD ON {{post.date_of_event}}</p><p>DURATION {{post.duration}}</p>
+
+        <button><a href="{%url 'ticket'  post.id%}" >Buy Ticket</a></button>
+
+    </div>
+</body>
+{% endblock%}

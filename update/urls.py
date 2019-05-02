@@ -9,8 +9,11 @@ urlpatterns=[
     url(r'^profile/(\d+)',views.profile,name ='profile'),
     url(r'^myProfile/(\d+)', views.myProfile, name='myProfile'),
     url(r'^event/', views.event, name='event'),  
-    url(r'^ticket/(\d+)', views.ticket, name='ticket'),  
-    url(r'^organiser/', views.organiser, name='organiser'),     
+    url(r'^info/(\d+)', views.info, name='info'),  
+    url(r'^organiser/', views.organiser, name='organiser'),    
+    url(r'^category/(\d+)',views.category,name ='category'),   
+    url(r'^ticket/(\d+)',views.ticket,name ='ticket'),   
+    url(r'^price/(\d+)',views.price,name ='price'),
 ]
 if settings.DEBUG:
     urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

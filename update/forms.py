@@ -1,5 +1,5 @@
 from django import forms
-from .models import Profile,Event,Ticket
+from .models import Profile,Event,Ticket,Tpayment
 
 class ProfileForm(forms.ModelForm):
     class Meta:
@@ -13,5 +13,10 @@ class EventForm(forms.ModelForm):
 
 class TicketForm(forms.ModelForm):
     class Meta:
-        model = Event
+        model = Ticket
+        exclude = ['event']
+
+class TpaymentForm(forms.ModelForm):
+    class Meta:
+        model = Tpayment
         exclude = ['event']

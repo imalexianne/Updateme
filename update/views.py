@@ -1,8 +1,8 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from .models import Profile,Event,Ticket
-from .forms import ProfileForm,EventForm,TicketForm
+from .models import Profile,Event,Ticket,Category,Tpayment
+from .forms import ProfileForm,EventForm,TicketForm,TpaymentForm
 import datetime as dt
 # Create your views here.
 
@@ -17,6 +17,7 @@ def home(request):
     event = Event.objects.all()
     return render(request, 'home.html',{"date": date,"user":user,"event":event})
 
+@login_required(login_url='/accounts/login/')
 def profile(request,edit):
     current_user = request.user
     profile=Profile.objects.get(user=current_user)
@@ -43,8 +44,40 @@ def profile(request,edit):
 def myProfile(request,id):
     user = User.objects.get(id = id)
     profiles = Profile.objects.get(user = user)
+    event = Event.objects.filter(user = user).all()
+
+    if request.method == 'POST':
+        form = TicketForm(request.POST, request.FILES)
+        if form.is_valid():
+            price = form.save(commit=False)
+            price.user = current_user
+            price.save()
+
+            return redirect(home)
+
+    else:
+        form = TicketForm()
     
-    return render(request,'my_profile.html',{"profiles":profiles,"user":user})
+    return render(request,'my_profile.html',{"form":form,"profiles":profiles,"user":user,"event":event})
+
+def price(request,id):
+    user = request.user
+    event = Event.objects.get(id = id)
+
+    if request.method == 'POST':
+        form = TicketForm(request.POST, request.FILES)
+        if form.is_valid():
+            price = form.save(commit=False)
+            price.user = user
+            price.event=event
+            price.save()
+
+            return redirect(home)
+
+    else:
+        form = TicketForm()
+    
+    return render(request,'price.html',{"form":form,"user":user,"event":event})
 
 @login_required(login_url='/accounts/login/')
 def event(request):
@@ -66,25 +99,37 @@ def organiser(request):
     user = User.objects.all()
     return render(request, 'organiser.html',{"user":user})
 
+def info(request,id):
+    post = Event.objects.get(id=id)
+    ticket = Ticket.objects.filter(event=post)
+
+  
+    return render(request, 'info.html', {'post':post,'ticket':ticket})
+
+
+def category(request,category_id):
+    
+    event_category = Category.objects.get(id = category_id)
+    event = Event.objects.filter(event_category = event_category.id)
+    
+    return render(request,'category.html',{'category':category,'event':event})
+
 def ticket(request,id):
     current_user = request.user
-    event = Event.objects.get(id=id)
+    post = Event.objects.get(id=id)
     ticket = Ticket.objects.filter(event=post)
-  
+
     if request.method == 'POST':
-        form = TicketForm(request.POST,request.FILES)
+        form = TpaymentForm(request.POST, request.FILES)
         if form.is_valid():
-            new_ticket = Ticket(ticket_name = ticket_name,user =current_user,price = price,ticket=post,number_of_tickets = number_of_tickets)
-            new_ticket.save()
+            pay = form.save(commit=False)
+            pay.user = current_user
+            pay.event=post
+            pay.save()
 
-            return redirect(home)        
-                
+            return redirect(home)
+
     else:
-        form = TicketForm()
-        return render(request, 'ticket.html', {"form":form,'post':post,'user':current_user,'ticket':ticket})
-
-@login_required(login_url='/accounts/login/')
-def price(request,id):
-    current_user = request.user
-    event = Event.objects.filter(id=id).all()
-    return render(request, 'organiser.html',)
+        form = TpaymentForm()
+  
+    return render(request, 'ticket.html', {"form": form,"current_user":current_user,"post":post})

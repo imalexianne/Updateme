@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+{{block.super}}
+<div class="container">
+  <h1 class="text-center">{{category.name }}</h1>
+  <div class="row">
+    {% for eve in event %}
+              <h5>{{eve.title}}</h5>
+             
+              <p></p>{{eve.description}}
+          
+    {% empty %}
+    <h3 class="text-center">No images available for {{category.name}}</h3>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
+

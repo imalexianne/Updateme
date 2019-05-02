@@ -50,7 +50,7 @@ class Category(models.Model):
 
 
 class Event(models.Model):
-    user = models.ForeignKey(User,on_delete=models.CASCADE, null=True)
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
     title = models.CharField(max_length=100,null=True)
     picture=models.ImageField(upload_to='images/', null=True)
     description = HTMLField()
@@ -62,6 +62,9 @@ class Event(models.Model):
     building = models.CharField(max_length=100,null=True,blank = True)
     event_category = models.ForeignKey(Category,on_delete=models.CASCADE, null=True)
     duration = models.PositiveIntegerField(null=True)
+    date_of_event = models.CharField(max_length=100,null=True)
+    time= models.TimeField(null=True,verbose_name='Starting time for the event')
+
     post_date = models.DateTimeField(auto_now_add=True, null=True)
   
     def __str__(self):
@@ -75,3 +78,23 @@ class Ticket(models.Model):
 
     def __str__(self):
         return self.ticket_name
+
+    def save_ticket(self):
+        self.save()
+
+    def delete_ticket(self):
+        self.delete()
+
+    @classmethod
+    def get_comments_by_event(cls, id):
+        tickets = Ticket.objects.filter(event__pk = id)
+        return tickets
+
+class Tpayment(models.Model):
+    event = models.ForeignKey(Event,on_delete=models.CASCADE, null=True)
+    first_name=models.CharField(max_length=100,null=True)
+    last_name=models.CharField(max_length=100,null=True)
+    email = models.CharField(max_length=100,null=True)
+    ticket_category = models.ForeignKey(Ticket,on_delete=models.CASCADE, null=True)
+    number_of_tickets =  models.PositiveIntegerField(null=True)
+    post_date = models.DateTimeField(auto_now_add=True, null=True)

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %} {% load staticfiles %}
+{% block content %}
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>New Project</title>
+  {{form.media}}
+
+{% block styles %} {% bootstrap_css %}
+  <link rel="stylesheet" href="{% static 'styles.css' %}"> {% endblock %}
+
+</head>
+
+<body>
+                    
+        
+<div class="container" id="index"   >
+                
+                
+  <form  action="{%url 'ticket' post.id %}" method="post" enctype="multipart/form-data">
+    {%csrf_token%}
+    
+    {% bootstrap_form form %}
+    <h3><strong>PRICE</strong></h3>
+    <p style="width: 100%;height: 35px;border: 1px solid rgb(212, 210, 210);border-radius: 5px;"> h</p>
+    <h3><strong>BALANCE:</strong></h3>
+    <p style="width: 100%;height: 35px;border: 1px solid rgb(212, 210, 210);border-radius: 5px;"></p>
+    <!-- <h3><strong>BALANCE:</strong></h3> -->
+    <input type="submit" class="btn btn-success btn-lg" value="Buy">
+  </form>
+
+   {% block scripts %}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  {% bootstrap_javascript %} {% endblock %}
+
+
+</div>
+
+</body>
+
+</html>
+{% endblock %}
