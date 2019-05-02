@@ -37,6 +37,13 @@
        <p>BUILDING {{post.building}}</p>
        <p>HELD ON {{post.date_of_event}}</p><p>DURATION {{post.duration}}</p>
 
+       <h3><center>PRICES</center></h3>
+        {% for tic in tickets%}
+        <p>TICKET {{tic.ticket_name}}</p>
+        <p>PRICE {{tic.price}}</p>
+        <p>NUMBER OF TICKETS {{tic.}}</p>
+        {% endfor %}
+
         <button><a href="{%url 'ticket'  post.id%}" >Buy Ticket</a></button>
 
     </div>

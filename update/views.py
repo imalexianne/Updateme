@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from .models import Profile,Event,Ticket,Category,Tpayment
-from .forms import ProfileForm,EventForm,TicketForm,TpaymentForm
+from .forms import ProfileForm,EventForm,TicketForm,TpaymentForm,PaymentForm
 import datetime as dt
 # Create your views here.
 
@@ -102,7 +102,6 @@ def organiser(request):
 def info(request,id):
     post = Event.objects.get(id=id)
     ticket = Ticket.objects.filter(event=post)
-
   
     return render(request, 'info.html', {'post':post,'ticket':ticket})
 
@@ -118,7 +117,7 @@ def ticket(request,id):
     current_user = request.user
     post = Event.objects.get(id=id)
     ticket = Ticket.objects.filter(event=post)
-
+    print(ticket)
     if request.method == 'POST':
         form = TpaymentForm(request.POST, request.FILES)
         if form.is_valid():
@@ -127,9 +126,25 @@ def ticket(request,id):
             pay.event=post
             pay.save()
 
-            return redirect(home)
+            ticket = Ticket.objects.get(id=id)
+            return redirect('payment')
 
     else:
         form = TpaymentForm()
+        form.fields['ticket_category'].initial = ticket
   
     return render(request, 'ticket.html', {"form": form,"current_user":current_user,"post":post})
+
+@login_required(login_url='/accounts/login/')
+def payments(request,id):
+    current_user = request.user
+    if request.method == 'POST':
+        form = PaymentForm(request.POST,request.FILES)
+        if form.is_valid():
+            pay = form.save(commit=False)
+            pay.user = current_user
+            pay.save()
+        return redirect("home")
+    else:
+        form = PaymentForm()
+    return render(request, 'payment.html', {"form":form})

@@ -96,5 +96,17 @@ class Tpayment(models.Model):
     last_name=models.CharField(max_length=100,null=True)
     email = models.CharField(max_length=100,null=True)
     ticket_category = models.ForeignKey(Ticket,on_delete=models.CASCADE, null=True)
+    
+
+class Payment(models.Model):
+
+    phonenumber=models.PositiveIntegerField(null=True)
+    amount=models.CharField(max_length=100,null=True)
     number_of_tickets =  models.PositiveIntegerField(null=True)
     post_date = models.DateTimeField(auto_now_add=True, null=True)
+
+
+    def __str__(self):
+        return self.First_Name
+    def save_payment(self):
+        self.save()

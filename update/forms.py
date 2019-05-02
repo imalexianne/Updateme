@@ -1,5 +1,5 @@
 from django import forms
-from .models import Profile,Event,Ticket,Tpayment
+from .models import Profile,Event,Ticket,Tpayment,Payment
 
 class ProfileForm(forms.ModelForm):
     class Meta:
@@ -20,3 +20,8 @@ class TpaymentForm(forms.ModelForm):
     class Meta:
         model = Tpayment
         exclude = ['event']
+
+class PaymentForm(forms.ModelForm):
+    class Meta:
+        model = Payment
+        fields = "__all__"
