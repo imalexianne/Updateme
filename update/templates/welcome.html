@@ -1,14 +1,35 @@
-{% extends 'base.html' %}
-{% load bootstrap3 %} 
+{% load bootstrap3 %}
 {% load staticfiles %}
-{% block content %}
 <html>
-    <body>
-        <div class="container">
-            <p>Specializing in HD, Vimeo is one of the more popular amateur online video sites where the results are anything but amateur. Most of the free clips available on Vimeo are user-submitted; it’s not a site to visit if you’re looking for popular music videos or movie trailers. What you will find, though, are big and beautiful HD videos shot by some of the most skilled up-and-coming directors and animators. The Vimeo video screen is far larger and has a higher resolution than any of the other sites mentioned here. Those who like to upload videos to your cell phone will appreciate that the free clips on Vimeo are optimized for playback on mobile devices.</p>
-                <center><button><center><a class="navbar-brand" href="/accounts/register" style="font-family: 'Pacifico', cursive;">ORGANISE</a></center></button></center>
-            <center><button><center><a class="navbar-brand" href="{%url 'home'%}" style="font-family: 'Pacifico', cursive;">VIEW EVENTS</a></center></button></center>
-        </div>
-    </body>
+   <head>
+           <meta charset="utf-8">
+           <meta name="viewport" content="width=device-width, initial-scale=1">
+            <title>UPDATEME</title>
+           {% block styles %}
+             {% bootstrap_css %}
+             <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+             <link href='https://fonts.googleapis.com/css?family=Amita' rel='stylesheet'>
+           {% endblock %}
+   </head>
+   <body>
+       <div id="welcome">
+               <nav class="navbar navbar-inverse">
+                       <div class="container-fluid">
+                               <i class="far fa-calendar-alt"></i>
+                           <div class="navbar-brand navbar-right " id="na">
+                               <a href="accounts/login/" id="or">ORGANIZER</a>
+                               <a  href="{% url 'home' %}">EVENTS</a>
+                             </div>
+                             <div class="navbar-brand navbar-left">
+                               <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRF7OnwOPSvO2LGwmdrekFg1_A6AUjCruQ95ge-49G7KbW5tlRq(7 kB)
+https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRF7OnwOPSvO2LGwmdrekFg1_A6AUjCruQ95ge-49G7KbW5tlRq
+" style="height:60" id="loading">
+                             </div>
+                     </div>
+                     </nav><br><br>
+                    <center><h1 class="he">WELCOME TO UPDATE-ME APP</h1><br><br><br>
+               <h4><strong>Thank you for visiting our application. Here ou will get all about Kigali Event. As long As you want to see the event click on the</strong> <strong>event</strong>. BUt if you need to advitise your event please click on <strong>organiser</strong></h4></center>
+           </div>
+   </body>
 </html>
-{% endblock %}
+

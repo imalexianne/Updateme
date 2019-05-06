@@ -21,10 +21,25 @@
 
    <div class="container" id="imj">
        <div class="row" >
-
+          <table>
+              <tr>
+                <th>TICKET</th>
+                <th>PRICE</th>
+                <th>PURCHASED TICKETS</th>
+                <th>TOTAL PRICE</th>
+              </tr>
+              <tr>
+                <td>{{ticket.ticket_name}}</td>
+                <td>{{ticket.price}}</td>
+                <td>{{tpayment.number_of_tickets}}</td>
+                <td>{{price}}</td>
+              </tr>
+          </table>
+        
+        <h2>{{remain}}</h2>
 
            <h1> WELCOME TO Payment</h1>
- <form  action="{%url 'payment'%}" method="post" enctype="multipart/form-data">
+ <form  action="{%url 'payment' id=tpayment.id%}" method="post" enctype="multipart/form-data">
    {%csrf_token%}
 
    {% bootstrap_form form%}

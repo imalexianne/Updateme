@@ -14,7 +14,7 @@ urlpatterns=[
     url(r'^category/(\d+)',views.category,name ='category'),   
     url(r'^ticket/(\d+)',views.ticket,name ='ticket'),   
     url(r'^price/(\d+)',views.price,name ='price'),
-    url(r'^payment/(\d+)',views.payments,name ='payment'),
+    url(r'^payment/(?P<id>[0-9999]+)/$',views.payments,name='payment'),
 ]
 if settings.DEBUG:
     urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

@@ -1,9 +1,11 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from .models import Profile,Event,Ticket,Category,Tpayment
+from .models import Profile,Event,Ticket,Category,Tpayment,Payment
 from .forms import ProfileForm,EventForm,TicketForm,TpaymentForm,PaymentForm
 import datetime as dt
+import requests
+import random
 # Create your views here.
 
 
@@ -101,8 +103,7 @@ def organiser(request):
 
 def info(request,id):
     post = Event.objects.get(id=id)
-    ticket = Ticket.objects.filter(event=post)
-  
+    ticket = Ticket.objects.filter(event=post).all()
     return render(request, 'info.html', {'post':post,'ticket':ticket})
 
 
@@ -126,8 +127,8 @@ def ticket(request,id):
             pay.event=post
             pay.save()
 
-            ticket = Ticket.objects.get(id=id)
-            return redirect('payment')
+            
+            return redirect('payment', id=pay.id)
 
     else:
         form = TpaymentForm()
@@ -135,16 +136,33 @@ def ticket(request,id):
   
     return render(request, 'ticket.html', {"form": form,"current_user":current_user,"post":post})
 
-@login_required(login_url='/accounts/login/')
+
 def payments(request,id):
     current_user = request.user
+    data = {}
+    hashed = random.randint(0,1000000)
+    tpayment = Tpayment.objects.filter(id=id).first()
+    ticket=Ticket.objects.filter(id = tpayment.ticket_category_id).first()
+    price = ticket.price * tpayment.number_of_tickets
+    remain = ticket.number_of_tickets - tpayment.number_of_tickets
+    print(ticket.price)
     if request.method == 'POST':
         form = PaymentForm(request.POST,request.FILES)
         if form.is_valid():
             pay = form.save(commit=False)
+            data['amount'] = str(price)
+            data['phonenumber'] = pay.phonenumber
+            data['clienttime'] = '1556616823718'
+            data['action'] = "deposit"
+            data['appToken'] = "9563d7e60dc40e0315bc"
+            data['hash'] = hashed
             pay.user = current_user
+            print(data)
             pay.save()
-        return redirect("home")
+            payload = data
+            url = "https://uplus.rw/bridge/"
+            requests.post(url, data=payload)
+            return redirect("home")
     else:
         form = PaymentForm()
-    return render(request, 'payment.html', {"form":form})
+    return render(request, 'payment.html', {"form": form,"price":price,"tpayment":tpayment,"ticket":ticket,"remain":remain})

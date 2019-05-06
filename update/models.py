@@ -95,12 +95,14 @@ class Tpayment(models.Model):
     first_name=models.CharField(max_length=100,null=True)
     last_name=models.CharField(max_length=100,null=True)
     email = models.CharField(max_length=100,null=True)
+    number_of_tickets = models.PositiveIntegerField(null=True)
     ticket_category = models.ForeignKey(Ticket,on_delete=models.CASCADE, null=True)
     
 
 class Payment(models.Model):
-
-    phonenumber=models.PositiveIntegerField(null=True)
+    tpayment = models.ForeignKey(Tpayment,on_delete=models.CASCADE, null=True)
+    event = models.ForeignKey(Event,on_delete=models.CASCADE, null=True)
+    phonenumber=models.CharField(max_length=100,null=True)
     amount=models.CharField(max_length=100,null=True)
     number_of_tickets =  models.PositiveIntegerField(null=True)
     post_date = models.DateTimeField(auto_now_add=True, null=True)

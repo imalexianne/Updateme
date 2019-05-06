@@ -1,43 +1,41 @@
-
-</div><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-<nav>
-  <div class="container" id="one">
-    <div class="navbar-header">
-        <a class="navbar-brand" href="{% url 'home' %}" ><strong>HOME</strong></a>
-    
-        {% if user.is_authenticated %}
-        <a class="navbar-brand" href="{%url 'event'%}" style="text-align: center;padding-left:20px;font-family: monospace;color:red;"><strong>ADD EVENT</strong></a>
-        <a class="navbar-brand" href="{%url 'myProfile' user.id%}" style="text-align: center;padding-left:20px;font-family: monospace;"><strong>PROFILE</strong></a>
-        <a class="navbar-brand" href="{%url 'profile'  user.id%}" style="text-align: center;padding-left:20px;font-family: monospace;"><strong>EDIT PROFILE</strong></a>
-        <a class="navbar-brand" href="/logout" style="text-align: center;padding-left:20px;font-family: monospace;"><strong>LOGOUT</strong></a>
-        {% else %}
-        <ul class="nav navbar-nav">
-  
-          <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="{% url 'welcome' %}">EVENTS
-            <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><a href="/category/1">SPORTS</a></li>
-              <li><a href="/location/10">MUSIC FEST</a></li>
-              <li><a href="/location/12">ENTERTAINMENT</a></li>
-              <li><a href="/location/11">SEMINARS</a></li>
-            </ul>
-          </li>
-        </ul>     
-        <a class="navbar-brand" href="{% url 'organiser' %}" style="text-align: center;padding-left:20px;font-family: monospace;color:red;"><strong>ORGANISERS</strong></a>
-        <a class="navbar-brand" href="/advices" style="text-align: center;padding-left:20px;font-family: monospace;color:red;"><strong>GET TICKETS</strong></a>
-        <a class="navbar-brand" href="/accounts/login/" style="text-align: center;padding-left:20px;font-family: monospace;"><strong>Login as Organiser</strong></a>
-        {% endif %}
-       
-      </div>
-  </div>
+ <!-- <div class="container-fluid" id="one"> -->
+   <nav class="navbar navbar-inverse">
+     <div class="container-fluid">
+         <div class="navbar-brand navbar-right ">
+       <a class="navbar-brand" href="{% url 'home' %}" ><strong>HOME</strong></a>
+       {% if user.is_authenticated %}
+       <a class="navbar-brand" href="{%url 'event'%}" style="text-align: center;padding-left:20px;font-family: monospace;color:red;"><strong>ADD EVENT</strong></a>
+       <a class="navbar-brand" href="{%url 'myProfile' user.id%}" style="text-align: center;padding-left:20px;font-family: monospace;"><strong>PROFILE</strong></a>
+       <a class="navbar-brand" href="{%url 'profile'  user.id%}" style="text-align: center;padding-left:20px;font-family: monospace;"><strong>EDIT PROFILE</strong></a>
+       <a class="navbar-brand" href="/logout" style="text-align: center;padding-left:20px;font-family: monospace;"><strong>LOGOUT</strong></a>
+       {% else %}
+       <ul class="nav navbar-nav">
+         <li class="dropdown">
+           <a class="dropdown-toggle" data-toggle="dropdown" href="{% url 'welcome' %}">LOCATION
+           <span class="caret"></span></a>
+           <ul class="dropdown-menu">
+             <li><a href="/location/9">SPORTS</a></li>
+             hgkhjk
+             <li><a href="/location/10">MUSIC FEST</a></li>
+             <li><a href="/location/12">ENTERTAINMENT</a></li>
+             <li><a href="/location/11">SEMINARS</a></li>
+           </ul>
+         </li>
+       </ul>
+       <a class="navbar-brand" href="{% url 'organiser' %}" style="text-align: center;padding-left:20px;font-family: monospace;color:red;"><strong>ORGANISERS</strong></a>
+       <a class="navbar-brand" href="/advices" style="text-align: center;padding-left:20px;font-family: monospace;color:red;"><strong>GET TICKETS</strong></a>
+       <a class="navbar-brand" href="/accounts/login/" style="text-align: center;padding-left:20px;font-family: monospace;"><strong>Login as Organiser</strong></a>
+       {% endif %}
+     </div>
+ </div>
 </nav>
 </body>
 </html>
+

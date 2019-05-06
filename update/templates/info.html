@@ -1,4 +1,6 @@
 {%extends 'base.html'%}
+{% load bootstrap3 %} 
+{% load staticfiles %}
 {% block content %}
 {{block.super}}
 <head>
@@ -12,21 +14,29 @@
             <p style="font-family: monospace;"> <center style="font-family: monospace;text-shadow: cadetblue;"><strong>Below are quetions that have been asked by our users if you feel like you can help PLEASE DO ! <br>You can add by commenting anyhting that you feel might be beneficial to the user.<br>Just Click the links below!</strong></center></p>
         </div> 
         <h1><center>{{post.title}}</center></h1>
-        <img src="{{post.profile_pic.url}}">
         <div class="row">
                 <div class="col-md-6">
-                      <p>{% autoescape on %}
-                            {{post.description| safe}}
-                {% endautoescape %}</p>
-    
+                    <img src="{{post.picture.url}}" alt="image" style="height:300px;width:500px;" class="image">
                 </div>
                 <div class="col-md-6">
-                <!-- video -->
+                        <p>{% autoescape on %}
+                                {{post.description| safe}}
+                    {% endautoescape %}</p>
+                </div>
+        </div>
+        <br>
+        <br>
+        <div class="row">
+                <div class="col-md-6">
+                     <!-- video -->
                     <video width="400" controls>
-                        <source src="{{post.demo.url}}" type="video/mp4">
-                        Your browser does not support HTML5 video.
-                      </video>
-                      
+                            <source src="{{post.demo_video.url}}" type="video/mp4">
+                            <source src="{{post.demo_video.url}}" type="video/ogg">
+                            Your browser does not support HTML5 video.
+                    </video>
+                </div>
+                <div class="col-md-6">
+                
                 </div>
        </div>
        <h3><center>EVENT LOCATION</center></h3>
@@ -38,10 +48,12 @@
        <p>HELD ON {{post.date_of_event}}</p><p>DURATION {{post.duration}}</p>
 
        <h3><center>PRICES</center></h3>
-        {% for tic in tickets%}
+        {% for tic in ticket %}
+
         <p>TICKET {{tic.ticket_name}}</p>
         <p>PRICE {{tic.price}}</p>
-        <p>NUMBER OF TICKETS {{tic.}}</p>
+        <p>NUMBER OF TICKETS {{tic.number_of_tickets}}</p>
+        
         {% endfor %}
 
         <button><a href="{%url 'ticket'  post.id%}" >Buy Ticket</a></button>

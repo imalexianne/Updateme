@@ -24,4 +24,4 @@ class TpaymentForm(forms.ModelForm):
 class PaymentForm(forms.ModelForm):
     class Meta:
         model = Payment
-        fields = "__all__"
+        exclude = ['event','tpayment', 'amount', 'number_of_tickets']
