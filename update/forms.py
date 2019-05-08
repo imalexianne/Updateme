@@ -19,7 +19,7 @@ class TicketForm(forms.ModelForm):
 class TpaymentForm(forms.ModelForm):
     class Meta:
         model = Tpayment
-        exclude = ['event']
+        exclude = ['event','ticket_category']
 
 class PaymentForm(forms.ModelForm):
     class Meta:

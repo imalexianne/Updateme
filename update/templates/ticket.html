@@ -28,6 +28,12 @@
     {%csrf_token%}
     
     {% bootstrap_form form %}
+    <select  name="filter_by_category" required>
+        <option selected="selected" disabled>Objects on page:</option>
+      {% for tic in ticket %}     
+      <option value="{{tic.id}}">{{tic.ticket_name}}</option>
+      {% endfor %}
+    </select>
    
     <input type="submit" class="btn btn-success btn-lg" value="Buy">
   </form>

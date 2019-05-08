@@ -65,7 +65,8 @@ def myProfile(request,id):
 def price(request,id):
     user = request.user
     event = Event.objects.get(id = id)
-
+    ticket = Ticket.objects.filter(event = event.id).first()
+    # print(event)
     if request.method == 'POST':
         form = TicketForm(request.POST, request.FILES)
         if form.is_valid():
@@ -116,15 +117,26 @@ def category(request,category_id):
 
 def ticket(request,id):
     current_user = request.user
+    copyname=request.POST.get('filter_by_category')
     post = Event.objects.get(id=id)
     ticket = Ticket.objects.filter(event=post)
-    print(ticket)
+    
+    cat = ''
+    print(copyname)
+    
     if request.method == 'POST':
         form = TpaymentForm(request.POST, request.FILES)
+        ticket_cat = Ticket.objects.get(id=int(copyname))
         if form.is_valid():
+            # cat = form.cleaned_data.get('filter_by_category')
+            # print(form)
+            num = ticket_cat.number_of_tickets-1
+            print(num)
             pay = form.save(commit=False)
             pay.user = current_user
             pay.event=post
+            pay.ticket_category=ticket_cat
+            print(pay.ticket_category)
             pay.save()
 
             
@@ -132,9 +144,9 @@ def ticket(request,id):
 
     else:
         form = TpaymentForm()
-        form.fields['ticket_category'].initial = ticket
+        # form.fields['ticket_category'].initial = ticket
   
-    return render(request, 'ticket.html', {"form": form,"current_user":current_user,"post":post})
+    return render(request, 'ticket.html', {"form": form,"current_user":current_user,"post":post,"ticket":ticket})
 
 
 def payments(request,id):
@@ -157,6 +169,7 @@ def payments(request,id):
             data['appToken'] = "9563d7e60dc40e0315bc"
             data['hash'] = hashed
             pay.user = current_user
+
             print(data)
             pay.save()
             payload = data

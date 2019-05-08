@@ -48,12 +48,19 @@
        <p>HELD ON {{post.date_of_event}}</p><p>DURATION {{post.duration}}</p>
 
        <h3><center>PRICES</center></h3>
-        {% for tic in ticket %}
 
-        <p>TICKET {{tic.ticket_name}}</p>
-        <p>PRICE {{tic.price}}</p>
-        <p>NUMBER OF TICKETS {{tic.number_of_tickets}}</p>
-        
+       {% for wis in ticket %}
+
+
+       <div class="well" id="pe">
+            <p>{{wis.price}}</p>
+
+            <p>TICKET .{{tic.ticket_name}}</p>
+            <p>PRICE {{tic.price}}</p>
+            <p>NUMBER OF TICKETS {{tic.number_of_tickets}}</p>
+            
+    
+        </div>
         {% endfor %}
 
         <button><a href="{%url 'ticket'  post.id%}" >Buy Ticket</a></button>

@@ -68,7 +68,7 @@ class Event(models.Model):
     post_date = models.DateTimeField(auto_now_add=True, null=True)
   
     def __str__(self):
-        return self.name + ": " +str(demo_video)
+        return self.title
 
 class Ticket(models.Model):
     event = models.ForeignKey(Event,on_delete=models.CASCADE, null=True)
