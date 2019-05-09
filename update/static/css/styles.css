@@ -55,7 +55,7 @@ nav{
  /* { */
  
  #welcome{
-  background-image:url("https://images.pexels.com/photos/164879/pexels-photo-164879.jpeg");
+  background-image:url("https://images.pexels.com/photos/675960/mic-music-sound-singer-675960.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
   -webkit-background-size:cover;
     -moz-background-size:cover;
     -o-background-size:cover;
@@ -97,9 +97,9 @@ nav{
   from {color: rgb(99, 31, 31);;}
   to {color: rgb(0, 255, 213);;}
  }
- h4{
+ h2{
   font-family: 'Amita';font-size: 34px;
-  color:cornsilk;
+  color:rgb(255, 255, 255);
  }
  
  #or{
