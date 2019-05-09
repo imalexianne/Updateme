@@ -55,12 +55,13 @@ nav{
  /* { */
  
  #welcome{
-  background-image:url("https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg");
+  background-image:url("https://images.pexels.com/photos/164879/pexels-photo-164879.jpeg");
   -webkit-background-size:cover;
     -moz-background-size:cover;
     -o-background-size:cover;
     background-size:cover;
     height:100%;
+    font-family: 'Lobster', cursive;
  }
  #loading {
   -webkit-animation: rotation 5s infinite linear;
@@ -151,9 +152,7 @@ a:hover .image {
 a:hover .middle {
   opacity: 1;
 }
-a:hover{
 
-}
 .ooh{
 border-radius: 50%;
 padding:2%;
