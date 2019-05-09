@@ -1,0 +1,77 @@
+{%extends 'base.html'%}
+
+{% block content %}
+{{block.super}}
+<head>
+      <link href="https://fonts.googleapis.com/css?family=Alegreya|Amatic+SC|EB+Garamond|Teko|Varela+Round" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Alegreya|Amatic+SC|Dancing+Script|EB+Garamond|Fredoka+One|Josefin+Slab|Teko|Varela+Round" rel="stylesheet">
+
+</head>
+<body>
+    <div class = "container">
+
+      <div id="prof">
+         <div class="jumbotron">
+               <h4><center  style="font-family: monospace;">{{user.username|upper}},</center></h4>
+               <p style="font-family: monospace;"> <center style="font-family: monospace;text-shadow: cadetblue;"><strong>Below is all your informations registered on tis account.</strong></center></p>
+           </div>     
+
+    <div class="row">
+      <div class="col-md-6">
+            <h3 class="row" style="margin-left: 30px;"><strong>   {{profiles.first_name}}  {{profiles.last_name}}</strong></h3>
+            <img src="{{profiles.profile_pic.url}}"  class="img-responsive" alt="Image" style="border-radius:50%;height:250px;width: 260px">
+            <p>Last edit : {{profiles.pub_date}}</p>
+            <hr>
+      </div>
+      <div class="col-md-6">
+            <p>{{profiles.bio}}</p>
+
+            <h3>Contact</h3>
+            ----------------
+            <p><strong>Tel NUmber</strong> : {{profiles.phone_number}}</p>
+            <p><strong>Email</strong> : {{profiles.email}}</p>
+            <h3>Location</h3>
+            -----------------
+            <p><strong>City :</strong>{{profiles.city}}</p>
+            <p><strong>Country :</strong>{{profiles.country}}</p>
+      </div>
+   </div>
+
+   <div class="row">
+      <div class="col-md-6">
+            {% autoescape on %}
+                  {{profiles.bio| safe}}
+           {% endautoescape %}</p>
+
+      </div>
+      <div class="col-md-6">
+            {% autoescape on %}
+            {{profiles.more| safe}}
+           {% endautoescape %}</p>
+       
+      </div>
+   </div>
+
+   </div>
+   {% for ev in event %}
+   
+   <div class="row">
+            <p><center>{{ev.title}}</p></center>
+            <div class="col-md-6">
+                  <p>{% autoescape on %}
+                        {{ev.description| safe}}
+            {% endautoescape %}</p>
+
+            </div>
+            <div class="col-md-6">
+            <!-- video -->
+            
+            </div>
+   </div>
+   <a href="{%url 'price'  ev.id%}">ADD PRICE</a>
+   {% endfor %}
+    </div>  
+</body>
+
+</html>
+{% endblock %}

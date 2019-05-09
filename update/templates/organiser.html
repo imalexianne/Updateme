@@ -1,0 +1,28 @@
+{%extends 'base.html'%}
+{% block content %}
+{{block.super}}
+<head>
+        <link href="https://fonts.googleapis.com/css?family=Acme|Pacifico|Playfair+Display" rel="stylesheet">
+
+</head>
+<body>
+    <div class = "container">
+        <div class="jumbotron">
+            <h4><center  style="font-family: monospace;">{{user.username|upper}},</center></h4>
+            <p style="font-family: monospace;"> <center style="font-family: monospace;text-shadow: cadetblue;"><strong>Below are quetions that have been asked by our users if you feel like you can help PLEASE DO ! <br>You can add by commenting anyhting that you feel might be beneficial to the user.<br>Just Click the links below!</strong></center></p>
+        </div>  
+    
+
+        {% for wis in user %}
+
+
+       <div class="well" id="pe">
+            <p>{{wis.username}}</p>
+            <a class="navbar-brand" href="{% url 'myProfile' wis.id%}">view profile</a>
+        </div>
+        {% endfor %}
+
+        
+    </div>
+</body>
+{% endblock%}
