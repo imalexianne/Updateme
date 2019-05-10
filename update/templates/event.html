@@ -15,17 +15,14 @@
       
       </head>
       
-<body>
+<body style="background-color: chocolate;">
     <div class = "container">
-
-        <div class="jumbotron">
-            <h4><center  style="font-family: monospace;">{{user.username|upper}},</center></h4>
-            <p style="font-family: monospace;"> <center style="font-family: monospace;text-shadow: cadetblue;"><strong>You ca feel this form and write what help we can provide. other users can read what you write and reply to you if they know they can help and want to help.</strong></center></p>
-        </div>     
+   <h2><center>enter any event </center></h2>
         <form  action="{%url 'event'%}" method="post" enctype="multipart/form-data">
             {%csrf_token%}
 
-    {% bootstrap_form form%}
+   
+    {% bootstrap_form form layout="vertical" size="large" label_class="form-label col-md-3" %}
     <input type="submit" class="btn btn-success btn-lg" value="Post">
   </form>
 

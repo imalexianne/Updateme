@@ -4,14 +4,32 @@
 <div class="container">
   <h1 class="text-center">{{category.name }}</h1>
   <div class="row">
-    {% for eve in event %}
-              <h5>{{eve.title}}</h5>
-             
-              <p></p>{{eve.description}}
-          
+    {% for i in event %}
+               
+    <div class="container-fluid">
+        <div class="row">
+               <div class="col-sm-4 col-md-4">
+                       <div class="thumbnail">
+                               <a href="{% url 'info' i.id%}"><img src="{{i.picture.url}}" style="height:400px;width:800px;" class="image"></a><hr>
+                         <div class="caption">
+                               <div class="middle">
+                              
+                           </div>
+                           <h3 class="t">{{i.title|upper}}</h3><br>
+                           <p><strong> {% autoescape on %}
+                                   {{i.description| safe}}
+                            {% endautoescape %}</strong></p>
+                         <center>  <button class="btn" class="btn btn-success"><a href="{% url 'info' i.id%}">MORE</a></button></center>
+                         </div>
+                       </div>
+                     </div>
     {% empty %}
     <h3 class="text-center">NO EVENTS ADDED YET !</h3>
     {% endfor %}
+
+    
+
+
   </div>
 </div>
 {% endblock %}

@@ -2,6 +2,9 @@
 {% load bootstrap3 %}
 {% block content %}
 {% load staticfiles %}
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One|Barlow+Condensed|Modak|Teko" rel="stylesheet">
+</head>
 <body id="log">
 <div class="container" id="for">
   <div class="row">
@@ -14,7 +17,7 @@
       <div class="panel panel-default">
 
         <div class="panel-heading">
-          <h3 class="text-center">Sign In</h3>
+          <p class="text-center"><p><strong><em>Don't have an account as an organiser ? Click<a href="/accounts/register/"> Sign Up</a> to create an account.</em></strong></p></p>
         </div>
         <div class="panel-body" >
 
@@ -29,7 +32,7 @@
             <input type="hidden" name="next" value="{{next}}">
 
           </form>
-          <p><strong><em>Don't have an account as an organiser ? <a href="/accounts/register/">Click Here</a> to sign up.</em></strong></p>
+          
 
         </div>
 
