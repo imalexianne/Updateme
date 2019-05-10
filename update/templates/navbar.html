@@ -6,7 +6,7 @@
 </head>
 <body>
  <!-- <div class="container-fluid" id="one"> -->
-   <nav class="navbar navbar-inverse">
+   <!-- <nav class="navbar navbar-inverse">
      <div class="container-fluid">
          <div class="navbar-brand navbar-right ">
        <a class="navbar-brand" href="{% url 'home' %}" ><strong>HOME</strong></a>
@@ -34,7 +34,52 @@
        {% endif %}
      </div>
  </div>
-</nav>
+</nav> -->
+<style>
+.icon-bar {
+  width: 100%;
+  height: 100px;
+  background-image:url("https://images.pexels.com/photos/1020315/pexels-photo-1020315.jpeg");
+  padding-top: 10px;
+}
+
+.icon-bar a {
+  float: left;
+  width: 20%;
+  text-align: center;
+  color: white;
+  font-size: 20px;
+}
+
+
+
+</style>
+<body>
+
+<div class="icon-bar">
+    <a class="navbar-brand" href="{% url 'home' %}" ><strong>HOME</strong></a>
+    {% if user.is_authenticated %}
+    <a class="navbar-brand" href="{%url 'event'%}" style="text-align: center;padding-left:20px;font-family: monospace;"><strong>ADD EVENT</strong></a>
+    <a class="navbar-brand" href="{%url 'myProfile' user.id%}" style="text-align: center;padding-left:20px;font-family: monospace;"><strong>PROFILE</strong></a>
+    <a class="navbar-brand" href="{%url 'profile'  user.id%}" style="text-align: center;padding-left:20px;font-family: monospace;"><strong>EDIT PROFILE</strong></a>
+    <a class="navbar-brand" href="/logout" style="text-align: center;padding-left:20px;font-family: monospace;"><strong>LOGOUT</strong></a>
+    {% else %}
+    <ul class="nav navbar-nav">
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="{% url 'home' %}"><strong>EVENT<span class="caret"></span></strong></a>
+        <ul class="dropdown-menu">
+          <li><a href="/category/1">SPORTS</a></li>
+          <li><a href="/category/2">MUSIC FEST</a></li>
+          <li><a href="/category/3">ENTERTAINMENT</a></li>
+          <li><a href="/category/4">SEMINARS</a></li>
+          <li><a href="/category/5">OTHERS</a></li>
+        </ul>
+      </li>
+    </ul>
+    <a class="navbar-brand" href="{% url 'organiser' %}" style="text-align: center;padding-left:20px;font-family: monospace;"><strong>ORGANISERS</strong></a>
+    <a class="navbar-brand" href="/accounts/register/" style="text-align: center;padding-left:20px;font-family: monospace;"><strong>SIGN UP</strong></a>
+    {% endif %}
+</div>
 </body>
 </html>
 

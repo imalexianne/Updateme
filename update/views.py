@@ -100,7 +100,8 @@ def event(request):
 
 def organiser(request):
     user = User.objects.all()
-    return render(request, 'organiser.html',{"user":user})
+    profiles = Profile.objects.all()
+    return render(request, 'organiser.html',{"user":user,"profiles":profiles})
 
 def info(request,id):
     post = Event.objects.get(id=id)

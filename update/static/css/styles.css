@@ -1,19 +1,57 @@
 
 nav{
   padding:2%;
-  /* background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhcOt8fiNw2tIXhDeV1u6G5UwgNBk5VtZMEaCVpdMSLGqeOkPb);
-  background-repeat: no-repeat; */
  }
+ .tablink {
+  background-color: #555;
+  color: white;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 17px;
+  width: 25%;
+}
+
+/* Change background color of buttons on hover */
+.tablink:hover {
+  color: black;
+}
+
+/* Set default styles for tab content */
+.tabcontent {
+  color: white;
+  display: none;
+  padding: 50px;
+  text-align: center;
+}
+
+/* Style each tab content individually */ 
+#London {background-color:#011;}
+#Paris {background-color:#012;}
+#Tokyo {background-color:#013;}
+#Oslo {background-color:#014;}
  #na{
-  font-family: 'Amita';font-size: 22px;
+  font-family: 'Modak', cursive;font-size: 22px;
   margin-left:2%;
   padding:2%;
  
  }
- #log{background-color: rgb(139, 79, 139);}
+ #log{ background-image:url("https://images.pexels.com/photos/1020315/pexels-photo-1020315.jpeg");}
  #for{padding-top:14%;
+  font-family: 'Modak', cursive;
+font-family: 'Teko', sans-serif;
+font-family: 'Alfa Slab One', cursive;
+font-family: 'Barlow Condensed', sans-serif;
+font-size: 20px;
 }
 #fo{padding-top:9%;
+  font-family: 'Modak', cursive;
+  font-family: 'Teko', sans-serif;
+  font-family: 'Alfa Slab One', cursive;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 20px;
 }
 
  /* .he{
@@ -55,13 +93,16 @@ nav{
  /* { */
  
  #welcome{
-  background-image:url("https://images.pexels.com/photos/164879/pexels-photo-164879.jpeg");
+  background-image:url("https://images.pexels.com/photos/352505/pexels-photo-352505.jpeg");
   -webkit-background-size:cover;
     -moz-background-size:cover;
     -o-background-size:cover;
     background-size:cover;
     height:100%;
-    font-family: 'Lobster', cursive;
+    font-family: 'Modak', cursive;
+font-family: 'Teko', sans-serif;
+font-size: 30px;
+
  }
  #loading {
   -webkit-animation: rotation 5s infinite linear;
@@ -79,7 +120,9 @@ nav{
  .he {
  
   color: red;
-  font-family: 'Amita';font-size: 44px;
+  font-family: 'Modak', cursive;
+font-family: 'Teko', sans-serif;
+font-size: 44px;
   -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
   -webkit-animation-duration: 10s; /* Safari 4.0 - 8.0 */
   animation-name: example;
@@ -96,10 +139,6 @@ nav{
  @keyframes example {
   from {color: rgb(99, 31, 31);;}
   to {color: rgb(0, 255, 213);;}
- }
- h4{
-  font-family: 'Amita';font-size: 34px;
-  color:cornsilk;
  }
  
  #or{
@@ -161,9 +200,7 @@ padding:2%;
 #portfolio{
     background-color: beige;
 }
-h3{
-    text-decoration:none;
-}
+
 .po{
   font-family: 'Adamina';font-size: 16px;
 }
