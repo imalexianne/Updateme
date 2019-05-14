@@ -7,14 +7,14 @@
 </head>
 <body id="log">
 <div class="container" id="for">
-  <div class="row">
+  <div class="row" >
     <!-- Empty div -->
     <div class="col-md-4"></div>
-    <div class="col-md-4">
+    <div class="col-md-4" >
       {% if form.errors %}
         <p> Password or Username is incorrect </p>
       {% endif %}
-      <div class="panel panel-default">
+      <div class="panel panel-default" >
 
         <div class="panel-heading">
           <p class="text-center"><p><strong><em>Don't have an account as an organiser ? Click<a href="/accounts/register/"> Sign Up</a> to create an account.</em></strong></p></p>
@@ -26,7 +26,7 @@
             {% bootstrap_form form%}
 
             <div class="form-group">
-              <input type="submit" class="btn btn-primary btn-sm" value="Login">
+              <input type="submit" class="btn btn-primary btn-lg" value="Login">
             </div>
 
             <input type="hidden" name="next" value="{{next}}">

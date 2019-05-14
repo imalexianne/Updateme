@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="{% static 'css/styles.css' %}"> {% endblock %}
 
 </head>
-<body style="background-color: chocolate;">
+<body style="background-image: url(https://images.pexels.com/photos/1020315/pexels-photo-1020315.jpeg);background-size: cover;">
   <br>
   <br>
 <div class="container">
@@ -25,7 +25,7 @@
         <h4><center  style="font-family: monospace;">{{user.username|upper}},</center></h4>
         <p style="font-family: monospace;"> <center style="font-family: monospace;text-shadow: cadetblue;"><strong>This form belo is for edit your profile and you can also add your contact.</strong></center></p>
     </div>     
-  <form  action="{%url 'profile' user.id %}" method="post" enctype="multipart/form-data">
+  <form  action="{%url 'profile' user.id %}" method="post" enctype="multipart/form-data" style="color:white;font-size:24px;">
     {%csrf_token%}
 
     {% bootstrap_form form%}

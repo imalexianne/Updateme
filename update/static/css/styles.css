@@ -1,9 +1,15 @@
 
 nav{
   padding:2%;
+  
  }
+nav :hover{
+  color:cyan;
+  
+
+}
  .tablink {
-  background-color: #555;
+  background-color: white;
   color: white;
   float: left;
   border: none;
@@ -15,9 +21,9 @@ nav{
 }
 
 /* Change background color of buttons on hover */
-.tablink:hover {
+/* .tablink:hover {
   color: black;
-}
+} */
 
 /* Set default styles for tab content */
 .tabcontent {
@@ -28,7 +34,7 @@ nav{
 }
 
 /* Style each tab content individually */ 
-#London {background-color:#011;}
+#London {background-color:#011;color:white;}
 #Paris {background-color:#012;}
 #Tokyo {background-color:#013;}
 #Oslo {background-color:#014;}
@@ -204,3 +210,81 @@ padding:2%;
 .po{
   font-family: 'Adamina';font-size: 16px;
 }
+
+a:hover .signup{
+    color:blue;
+    text-decoration:none;
+
+  }
+  .icon-bar {
+    width: 100%;
+    height: 100px;
+    background-color: rgb(136, 122, 122);
+    
+  
+  }
+  
+  .icon-bar a {
+    /* float: left; */
+    width: 20%;
+    /* text-align: center; */
+    color: white;
+    font-size: 20px;
+  }
+  #hm{
+    margin:20px;
+    text-decoration:none;
+    transition: transform .2s; 
+  }
+  #hm :hover{
+transform: scale(1.5);
+  }
+  #ad{
+    margin:20px; 
+    text-decoration:none; 
+  }
+  #ep{
+    margin:20px;
+    text-decoration:none; 
+  }
+  #pf{
+    margin:20px;
+    text-decoration:none; 
+  }
+  #ads{
+
+    text-decoration:none; 
+    margin-bottom:30%;
+  }
+  #eps{
+    margin-bottom:50%;
+    text-decoration:none; 
+  }
+  #pfs{
+    margin-bottom:50%;
+    text-decoration:none; 
+  }
+  #lo{
+    text-decoration:none; 
+  }
+ 
+
+  .zoom {
+    font-family: 'Amita';font-size: 22px;
+    transition: transform .2s;
+    margin: 0 auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), insert 0 0 1px rgba(255, 255, 255, 0.6);
+    /* background:rgb(8, 235, 223); */
+    color:cyan;
+    text-decoration: none;
+  }
+  
+  .zoom:hover {
+    /* -ms-transform: scale(1.5); /* IE 9 */
+    
+    transform: scale(1.5); 
+  }
+ #evt{
+  font-family: 'Amita';font-size: 44px;
+  color:white;
+ }
